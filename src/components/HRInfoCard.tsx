@@ -1,7 +1,9 @@
 import React from 'react';
-import {useObserver} from 'mobx-react-lite';
-import {storeContext} from '../context';
+// import {useObserver} from 'mobx-react-lite';
+// import {storeContext} from '../context';
 import {Employee} from '../stores/store';
+import {useRootData} from '../hooks';
+// import { HRInfoCardPage } from '../pages/HRInfoCardPage';
 
 export const HRInfoCard: React.FC<{employeeInfos: Employee}> = ({employeeInfos}) => {
     return (
@@ -14,14 +16,8 @@ export const HRInfoCard: React.FC<{employeeInfos: Employee}> = ({employeeInfos})
 }
 
 export const EmployeeInfoLists = () => {
-    const store = React.useContext(storeContext);
-    if(!store) {
-        throw Error('스토어 없음');
-    } else {
-        return useObserver(() => {
-            return <HRInfoCard employeeInfos={store.allInfos}/>
-        })
-    }
+    const allInfos = useRootData(store => store.allInfos);
+    return <HRInfoCard employeeInfos={allInfos}/>
 }
 
 export default EmployeeInfoLists;
