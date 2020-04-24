@@ -1,12 +1,12 @@
 import React from 'react';
-import {HRInfoCardPage} from './pages/HRInfoCardPage'
+import ChartExample from './components/chartExample'
 import StoreProvider from './context'
 
 function App() {
   return (
     <StoreProvider>
     <div className="border">
-      <HRInfoCardPage/>
+      <ChartExample />
     </div>
     </StoreProvider>
   );
